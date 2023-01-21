@@ -11,11 +11,9 @@ import { useMovies } from '../hooks/useMovies';
 const windowWidth = Dimensions.get("window").width;
 
 export const HomeScreen = () => {
-  const {peliculasEnCine,peliculasPopular,isLoading} = useMovies();
+  const {nowPlaying,popular, topRated, upcoming,isLoading} = useMovies();
   const {top} = useSafeAreaInsets();
   
-  console.log(peliculasEnCine[2]?.title);
-
   const navigation = useNavigation();
 
   if(isLoading){
@@ -34,7 +32,7 @@ export const HomeScreen = () => {
         {/* CAROUSEL PRINCIPAL */}
         <View style={{ height:440 }}>
           <Carousel 
-              data={peliculasEnCine} 
+              data={nowPlaying} 
               renderItem={({item}:any)=> <MoviePoster movie={item} /> }
               sliderWidth={windowWidth}
               itemWidth={200}
@@ -43,9 +41,9 @@ export const HomeScreen = () => {
         </View>
 
         {/* FlatList Horizontal desde Componente Creado */}
-        <HorizontalSlider title="En Cine" movies={peliculasEnCine}/>
-        <HorizontalSlider title="Populares" movies={peliculasPopular}/>
- 
+        <HorizontalSlider title="Populares" movies={popular}/>
+        <HorizontalSlider title="Lo mas TOP" movies={topRated}/>
+        <HorizontalSlider title="Lo que se viene" movies={upcoming}/>
       </View>
     </ScrollView>
   )
