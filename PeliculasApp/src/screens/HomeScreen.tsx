@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { Text, View, Button, ActivityIndicator, Dimensions, FlatList, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Carousel, { Pagination } from 'react-native-snap-carousel';//LIBRERIA DEL CAROUSEL
+import { GradientBackground } from '../components/GradientBackground';
 import { HorizontalSlider } from '../components/HorizontalSlider';
 import { MoviePoster } from '../components/MoviePoster';
 import { useMovies } from '../hooks/useMovies';
@@ -26,7 +27,8 @@ export const HomeScreen = () => {
     )
   }
   return (
-    <ScrollView>
+    <GradientBackground>
+      <ScrollView>
       <View style={{ marginTop:top+20 }}>
         
         {/* CAROUSEL PRINCIPAL */}
@@ -46,5 +48,6 @@ export const HomeScreen = () => {
         <HorizontalSlider title="Lo que se viene" movies={upcoming}/>
       </View>
     </ScrollView>
+    </GradientBackground>
   )
 }
